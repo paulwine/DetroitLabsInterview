@@ -1,0 +1,5 @@
+.forecastContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    background: 'linear-gradient(90deg, rgba(156,246,255,1) 0%, rgba(0,212,255,1) 100%)'
+}
