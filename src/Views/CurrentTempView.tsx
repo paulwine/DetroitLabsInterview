@@ -27,7 +27,7 @@ export default class CurrentTempView extends React.Component {
         return (
         <div>
             <Typography variant={"h4"}>Current Temperature</Typography>
-            <Typography variant={"h2"}>{state.currentTemp}°F</Typography>
+            <h1>{state.currentTemp}°F</h1>
         </div>
         )
     }

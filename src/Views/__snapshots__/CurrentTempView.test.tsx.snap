@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CurentTempView should render component to match snapshot 1`] = `"<div><h4 class=\\"MuiTypography-root MuiTypography-h4\\">Current Temperature</h4><h1>90°F</h1></div>"`;
