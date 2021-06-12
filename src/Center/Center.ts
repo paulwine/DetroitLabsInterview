@@ -111,14 +111,14 @@ export class Center {
         let forecastDays: ForecastDay[] = [];
 
         list.forEach((item : any) => {
-            const temp : number = item["main"]["temp"];
+            const temperature : number = item["main"]["temp"];
             const imgUrl : string = iconEndpoint+ item["weather"][0]["icon"] + '.png';
             const date : Date = new Date(item["dt_txt"]);
 
             const forecastDay : ForecastDay = {
-                imgUrl: imgUrl,
-                temperature: temp,
-                date: date
+                imgUrl,
+                temperature,
+                date
             };
             forecastDays.push(forecastDay);
         })
@@ -126,6 +126,5 @@ export class Center {
         state.forecastDays = forecastDays;
 
         Center.update();
-        
     }
 }

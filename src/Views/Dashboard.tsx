@@ -6,16 +6,10 @@ import CurrentTempView from './CurrentTempView';
 import FiveDayView from './FiveDayView';
 import { Typography } from '@material-ui/core';
 
-interface DashboardProps {
 
-}
 
-interface DashboardState {
-
-}
-
-export default class Dashboard extends React.Component<DashboardProps, DashboardState> {
-    constructor(props : DashboardProps){
+export default class Dashboard extends React.Component {
+    constructor(props : any){
         super(props);
     }
 
