@@ -93,37 +93,47 @@ export class Center {
         const currentTempEndpoint = apiEndpoint + 
         `weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
 
-        const currentTempResponse = await fetch(currentTempEndpoint);
-        const currentTempJSON = await currentTempResponse.json();
-        const currentTemp = currentTempJSON["main"]["temp"];
+        try {
+            const currentTempResponse = await fetch(currentTempEndpoint);
+            const currentTempJSON = await currentTempResponse.json();
 
-        state.currentTemp = currentTemp;
-        state.userCity = currentTempJSON["name"];
+            const currentTemp = currentTempJSON["main"]["temp"];
+
+            state.currentTemp = currentTemp;
+            state.userCity = currentTempJSON["name"];
+        } catch(err) {
+            console.error(err);
+        }
 
         const fiveDayEndpoint = apiEndpoint + 
         `forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
 
-        const fiveDayResponse = await fetch(fiveDayEndpoint);
-        const fiveDayJSON = await fiveDayResponse.json();
+        try {
+            const fiveDayResponse = await fetch(fiveDayEndpoint);
+            const fiveDayJSON = await fiveDayResponse.json();
 
-        const list = fiveDayJSON["list"];
+            const list = fiveDayJSON["list"];
 
-        let forecastDays: ForecastDay[] = [];
+            let forecastDays: ForecastDay[] = [];
 
-        list.forEach((item : any) => {
-            const temperature : number = item["main"]["temp"];
-            const imgUrl : string = iconEndpoint+ item["weather"][0]["icon"] + '.png';
-            const date : Date = new Date(item["dt_txt"]);
+            list.forEach((item : any) => {
+                const temperature : number = item["main"]["temp"];
+                const imgUrl : string = iconEndpoint+ item["weather"][0]["icon"] + '.png';
+                const date : Date = new Date(item["dt_txt"]);
 
-            const forecastDay : ForecastDay = {
-                imgUrl,
-                temperature,
-                date
-            };
-            forecastDays.push(forecastDay);
-        })
+                const forecastDay : ForecastDay = {
+                    imgUrl,
+                    temperature,
+                    date
+                };
+                forecastDays.push(forecastDay);
+            })
 
-        state.forecastDays = forecastDays;
+            state.forecastDays = forecastDays;
+        }
+        catch (err) {
+            console.error(err);
+        }
 
         Center.update();
     }
