@@ -11,7 +11,7 @@ configure({ adapter: new Adapter() });
 
 describe('FiveDayView', () =>{
     beforeAll(() => {
-        Center.center().state = {
+        Center.center().internalState = {
             userCity: undefined,
             userLocation: {
                 latitude: 43.500096,

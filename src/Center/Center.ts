@@ -24,7 +24,7 @@ const iconEndpoint = "http://openweathermap.org/img/w/";
 
 export class Center {
     private static instance: Center;
-    private internalState : CenterState;
+    public internalState : CenterState;
 
     private constructor() { 
         this.internalState = {

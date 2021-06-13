@@ -4,7 +4,7 @@ import 'jest-fetch-mock';
 
 describe('Center', () => {
     beforeEach(() => {
-        Center.center().state = {
+        Center.center().internalState = {
             userCity: undefined,
             userLocation: {
                 latitude: 43.500096,
@@ -16,7 +16,7 @@ describe('Center', () => {
         }
     }),
     it('should fetch weather data, populating currentTemp and forecastDays', async () => {
-        let state = Center.center().state;
+        let state = Center.center().internalState;
         expect(state.currentTemp).toBe(0);
         expect(state.forecastDays.length).toBe(0);
 
@@ -26,7 +26,7 @@ describe('Center', () => {
         expect(state.forecastDays.length).toBe(40);
     })
     it ('should set city name according to latitude and longitude', async () => {
-        let state = Center.center().state;
+        let state = Center.center().internalState;
         expect(state.userCity).toBeUndefined();
 
         await Center.getWeatherData()

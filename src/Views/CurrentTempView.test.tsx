@@ -9,7 +9,7 @@ configure({ adapter: new Adapter() });
 
 describe('CurentTempView', () =>{
     beforeAll(() => {
-        Center.center().state = {
+        Center.center().internalState = {
             userCity: undefined,
             userLocation: {
                 latitude: 43.500096,
