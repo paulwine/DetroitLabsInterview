@@ -22,7 +22,7 @@ export default class Dashboard extends React.Component {
     }
 
     render(){
-        const state = Center.center().state;
+        const state = Center.state();
         return (
         <div className="DashboardView">
             <div>

@@ -16,7 +16,7 @@ export default class CurrentTempView extends React.Component {
 
 
     render(){
-        const state = Center.center().state;
+        const state = Center.state();
         if (!state.currentTemp){
             return (
                 <div>

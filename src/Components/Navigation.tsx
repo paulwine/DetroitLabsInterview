@@ -33,7 +33,7 @@ export default class Navigation extends React.Component<NavigationProps, Navigat
     }
 
     render(){
-        const state = Center.center().state;
+        const state = Center.state();
         return (
         <div className="Navigation">
                     <Paper square>

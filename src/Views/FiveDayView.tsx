@@ -30,7 +30,7 @@ export default class FiveDayView extends React.Component<FiveDayViewProps, FiveD
     componentDidMount() {
         Center.addListener(this);
 
-        const state = Center.center().state;
+        const state = Center.state();
         const forecastDays = state.forecastDays;
 
         let currentDate = new Date().getDate();

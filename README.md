@@ -1,46 +1,27 @@
-# Getting Started with Create React App
+# Weather Forecast Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is created using React in a typescript configuration, along with Jest for unit testing and Material UI for UI and stylization
 
-## Available Scripts
+## Project Overview
 
-In the project directory, you can run:
+Here I will go over some of the major components and classes
 
-### `yarn start`
+### `Center`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Center is the heart of the application.  It serves as a central repository of truth accessible from any component as it is a singleton data store.  
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+This is not quite a FLUX based system as the Center does not process actions, rather it opens up functions to allow mutation on a single state.
 
-### `yarn test`
+If you would like to access the single instance of the entire center, simply call
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```typescript
+    Center.center();
+```
 
-### `yarn build`
+In order to access the Center state, simply import Center into any component and call 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```typescript
+    Center.state();
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+The Center state includes properties to display the active view (Current Temp or Five Day Forecast), current temperature, an array containing forecast day objects, user location and the name of the user's current city.

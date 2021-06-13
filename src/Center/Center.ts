@@ -24,10 +24,10 @@ const iconEndpoint = "http://openweathermap.org/img/w/";
 
 export class Center {
     private static instance: Center;
-    public state : CenterState;
+    private internalState : CenterState;
 
     private constructor() { 
-        this.state = {
+        this.internalState = {
             activeView: ActiveView.CurrentTemp,
             currentTemp: 0,
             forecastDays: []
@@ -39,6 +39,10 @@ export class Center {
             Center.instance = new Center();
         }
         return Center.instance;
+    }
+
+    public static state(): CenterState {
+        return Center.center().internalState;
     }
 
     // ================== Update Functions ============================
@@ -62,7 +66,7 @@ export class Center {
     //================= UI Functions =====================================
 
     public static navigate(view: ActiveView) : void {
-        Center.center().state.activeView = view;
+        Center.state().activeView = view;
         Center.update();
     }
 
@@ -74,7 +78,7 @@ export class Center {
                 latitude: position.coords.latitude,
                 longitude: position.coords.longitude
             }
-            Center.center().state.userLocation = coords;
+            Center.state().userLocation = coords;
             Center.update();
             Center.getWeatherData();
         })
@@ -82,7 +86,7 @@ export class Center {
     }
 
     public static async getWeatherData() : Promise<void> {
-        const state = Center.center().state;
+        const state = Center.state();
         if (!state.userLocation){
             console.error("No User Location Set");
             return;
