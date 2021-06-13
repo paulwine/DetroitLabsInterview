@@ -14,7 +14,7 @@ export class ForecastDayView extends React.Component<ForecastDayViewProps>{
         if (!this.props.items || this.props.items.length == 0){
             return (
                 <div>
-                    <h2>User Location Not Set</h2>
+                    <h2>No Forecast Data for Date</h2>
                 </div>
             )
         }
